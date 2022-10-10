@@ -1,42 +1,33 @@
 {
   "project_info": {
-    "project_number": "268190098641",
-    "firebase_url": "https://nari-women-safety-app-default-rtdb.firebaseio.com",
-    "project_id": "nari-women-safety-app",
-    "storage_bucket": "nari-women-safety-app.appspot.com"
+    "project_number": "264611110773",
+    "project_id": "nari-women-safety-app-d74e7",
+    "storage_bucket": "nari-women-safety-app-d74e7.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:268190098641:android:fa7f738332cc76b3e791f0",
+        "mobilesdk_app_id": "1:264611110773:android:76392593551f2e6696fd3c",
         "android_client_info": {
           "package_name": "com.brainstormers.nari_women_safety"
         }
       },
       "oauth_client": [
         {
-          "client_id": "268190098641-a5oc3sramgjgp79j1k0q3llgao5dssuo.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.brainstormers.nari_women_safety",
-            "certificate_hash": "f604ea9a1ebe19975207821fdbd2d0cc54fa199c"
-          }
-        },
-        {
-          "client_id": "268190098641-ie1jnqambl6lmgrqtvud9q1pvl85u8hb.apps.googleusercontent.com",
+          "client_id": "264611110773-6nr09ro4di3e841e5lofs64m8g0nil05.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCsF5NeUXlC98pDDQkjGbZVAWSMdQyYqN4"
+          "current_key": "AIzaSyAGcmnvGPBtY4P2dTLUMNC9-6USvUErDVI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "268190098641-ie1jnqambl6lmgrqtvud9q1pvl85u8hb.apps.googleusercontent.com",
+              "client_id": "264611110773-6nr09ro4di3e841e5lofs64m8g0nil05.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

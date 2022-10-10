@@ -41,7 +41,7 @@ class _SosState extends State<Sos> {
               ),
             ),
             //  Button to add guardians
-            Container(
+            SizedBox(
               child: TextButton.icon(
                 icon: Icon(FontAwesomeIcons.plus),
                 label: Text('Add Guardian'),
@@ -79,6 +79,7 @@ class _AddGuardianState extends State<AddGuardian> {
     return AlertDialog(
       title: Text('Add Guardian'),
       content: Column(
+        mainAxisSize: MainAxisSize.min,
             children: [
               ListView.builder(
                 shrinkWrap: true,

@@ -36,6 +36,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: Colors.transparent,
         title: Container(margin: EdgeInsets.fromLTRB(0, 20, 0, 0),child: Text("Hey ${u1.name}...",style: TextStyle(color: Colors.black,fontSize: 28,fontWeight: FontWeight.bold),textAlign: TextAlign.start,)),

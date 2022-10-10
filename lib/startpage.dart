@@ -5,7 +5,7 @@ import 'package:nari_women_safety/shared/bottom_bar.dart';
 import 'package:nari_women_safety/sos/sos.dart';
 import 'package:shake/shake.dart';
 
-import 'Ordertrackingpage.dart';
+import 'map/Ordertrackingpage.dart';
 import 'features/featurespage.dart';
 import 'home/homepage.dart';
 import 'map/mappage.dart';
@@ -31,19 +31,19 @@ class _StartPageState extends State<StartPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    // ShakeDetector.autoStart(
-    //   onPhoneShake: () async{
-    //     ScaffoldMessenger.of(context)
-    //         .showSnackBar(SnackBar(content: Text('Shake!')));
-    //     print("Shake");
-    //     SendSMS();
-    //     // Do stuff on phone shake
-    //   },
-    //   // minimumShakeCount: 1,
-    //   shakeSlopTimeMS: 500,
-    //   // shakeCountResetTime: 300,
-    //   shakeThresholdGravity: 1.85,
-    // );
+    ShakeDetector.autoStart(
+      onPhoneShake: () async{
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('Shake!')));
+        print("Shake");
+        SendSMS();
+        // Do stuff on phone shake
+      },
+      minimumShakeCount: 3,
+      shakeSlopTimeMS: 500,
+      // shakeCountResetTime: 300,
+      shakeThresholdGravity: 1.5,
+    );
   }
   @override
   Widget build(BuildContext context) {
