@@ -154,7 +154,7 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     codeSent: (String verificationId, int? resendToken) {
                       LoginPage.verify = verificationId;
-                      Navigator.pushNamed(context, '/otp');
+                      Navigator.pushReplacementNamed(context, '/otp');
                     },
                     codeAutoRetrievalTimeout: (String verificationId) {},
                   );

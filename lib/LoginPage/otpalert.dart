@@ -158,7 +158,7 @@ class _OTPState extends State<OTP> {
 
                   // Sign the user in (or link) with the credential
                   await auth.signInWithCredential(credential);
-                  Navigator.pushNamed(context, '/home');
+                  Navigator.popAndPushNamed(context, '/home');
                 } on Exception catch (e) {
                   setState((){
                     otp_msg = "Wrong OTP! Try Again.. or\nCheck your Number";

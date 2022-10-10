@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nari_women_safety/Guardian/Permission.dart';
+import 'package:nari_women_safety/LoginPage/loginpage.dart';
 import 'package:nari_women_safety/main.dart';
 import 'package:nari_women_safety/startpage.dart';
 
@@ -71,7 +72,7 @@ class _GaurdianPageState extends State<GaurdianPage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute<void>(
-                                builder: (BuildContext context) => StartPage()));
+                                builder: (BuildContext context) => IniPage()));
                       },
                       Icon(Icons.woman,size: 40,)
                     ),
@@ -89,33 +90,6 @@ class _GaurdianPageState extends State<GaurdianPage> {
                 ),
               ),
             ),
-            // Container(
-            //   height: 100,
-            //   width: double.infinity,
-            //   child: CreateCard(
-            //     'Guardian',
-            //     () {
-            //       Navigator.push(
-            //           context,
-            //           MaterialPageRoute<void>(
-            //               builder: (BuildContext context) => PermissionPage()));
-            //     },
-            //   ),
-            // ),
-            //       Padding(
-            // padding: EdgeInsets.only(top: 10, left: 2),
-            // child: OutlinedButton(
-            // // child: Colors.black,
-            // child: Text(
-            // 'Guardian',
-            // style: TextStyle(color: Colors.black),
-            // ),
-            // onPressed: ()  {Navigator.push(context,  MaterialPageRoute<void>(
-            // builder: (BuildContext context) => PermissionPage(),
-            // ));
-            // },
-            // ),
-            // ),
           ],
         ),
       ),
