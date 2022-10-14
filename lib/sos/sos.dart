@@ -10,12 +10,12 @@ void SendSMS() async{
   print("IN SMS");
 bool? permissionsGranted = await telephony.requestPhoneAndSmsPermissions;
 for(var guardian in Sos.guardians){
-telephony.sendSms(to: "+91$guardian", message: "Emergency Help Me Please!!!!\nMy Current Location : https://maps.google.com/?q=<lat>,<lng> ");
+telephony.sendSms(to: "$guardian", message: "Emergency Help Me Please!!!!\nMy Current Location : https://maps.google.com/?q=<lat>,<lng> ");
 };}
 class Sos extends StatefulWidget {
   Sos({Key? key}) : super(key: key);
 
-  static var guardians = ['9998441580'];
+  static var guardians = currentuser.guardians.map((e) => e.phone_no).toList();
 
   @override
   State<Sos> createState() => _SosState();
@@ -79,30 +79,35 @@ class _AddGuardianState extends State<AddGuardian> {
     return AlertDialog(
       title: Text('Add Guardian'),
       content: Column(
-        mainAxisSize: MainAxisSize.min,
-            children: [
-              ListView.builder(
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                itemCount: Sos.guardians.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(Sos.guardians[index]),
-                  );
-                },
-              ),
-              TextField(
-                onChanged: (value) {
-                  setState(() {
-                    phoneno = value;
-                  });
-                },
-                keyboardType: TextInputType.number,
-                controller: _guardian,
-                decoration: InputDecoration(hintText: "Enter Number"),
-              ),
-            ],
-          ),
+          mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  height: Sos.guardians.length<5 ? Sos.guardians.length*50 : 250,
+                  width: double.maxFinite,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    itemCount: Sos.guardians.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(Sos.guardians[index]),
+                      );
+                    },
+                  ),
+                ),
+                TextField(
+                  onChanged: (value) {
+                    setState(() {
+                      phoneno = value;
+                    });
+                  },
+                  keyboardType: TextInputType.number,
+                  controller: _guardian,
+                  decoration: InputDecoration(hintText: "Enter Number"),
+                ),
+              ],
+            ),
+      // ),
       actions: <Widget>[
         TextButton(
           style: TextButton.styleFrom(

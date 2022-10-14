@@ -28,13 +28,6 @@ class _LoginPageState extends State<LoginPage> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Colors.white,
-      //   centerTitle: true,
-      //   elevation: 0,
-      //   foregroundColor: Colors.black,
-      //   title: Text('Login'),
-      // ),
       body: Container(
         margin: EdgeInsets.fromLTRB(10, 10, 10, 50),
         alignment: Alignment.center,
@@ -50,9 +43,7 @@ class _LoginPageState extends State<LoginPage> {
                   )
               ),
             ),
-            SizedBox(
-              height: 50,
-            ),
+            const SizedBox(height: 50),
             //Text that contains "Enter Your number and verify with OTP"
             Container(
               margin: EdgeInsets.fromLTRB(80, 20, 80, 10),

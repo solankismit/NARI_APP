@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nari_women_safety/LoginPage/otpalert.dart';
 import 'package:nari_women_safety/features/FakeCall/fakecall.dart';
 import 'package:nari_women_safety/features/anonymous_forum.dart';
 import 'package:nari_women_safety/features/efir.dart';
+import 'package:nari_women_safety/services/userdetails.dart';
 import 'package:nari_women_safety/sos/sos.dart';
 import 'package:nari_women_safety/theme.dart';
 import 'feedback.dart';
@@ -30,7 +32,7 @@ class FeaturesPage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Safety Features",style:TextStyle(fontWeight: FontWeight.bold)),
         backgroundColor: appTheme.primaryColor,
-        toolbarHeight: 80,
+        toolbarHeight: 65,
         centerTitle: true,
       ),
       body: Container(
@@ -41,7 +43,7 @@ class FeaturesPage extends StatelessWidget {
           children: [
             CreateCard('SOS', (){print("Button Pressed");Navigator.push(context, MaterialPageRoute(builder: (context) => Sos()));}),
             CreateCard('Fake Call', (){Navigator.push(context, MaterialPageRoute(builder: (context) => FakeCall()));}),
-            CreateCard('Anonymous Forum', (){Navigator.push(context, MaterialPageRoute(builder: (context) => AnonymousForum())); }),
+            CreateCard('Anonymous Forum', (){getUser();}),
             CreateCard('Feedback History', (){Navigator.push(context, MaterialPageRoute(builder: (context) => FeedbackHistory()));}),
             CreateCard('E-FIR', (){
               Uri url =  Uri.parse("https://www.deshgujarat.com/2022/07/22/gujarat-govt-announces-online-e-fir-service-for-vehicle-and-mobile-phone-theft/");

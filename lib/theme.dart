@@ -18,3 +18,6 @@ var appTheme = ThemeData(
   // ),
 
 );
+
+Color primary = Color.fromRGBO(0, 47, 89, 1);
+Color secondary = Color.fromARGB(255, 143, 182, 237);

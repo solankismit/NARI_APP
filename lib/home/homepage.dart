@@ -24,12 +24,12 @@ class _HomePageState extends State<HomePage> {
 
   Color toggleColor = Colors.white;
   // Adding User in Code only
-  User u1 = User(
-    aadhar_number: "1234 4567 4561 4567",
-    age: "19",
-    name: "AD",
-    guardian: Guardian(name: "Varni",phone_no: "1234567890")
-  );
+  // User u1 = User(
+  //   aadhar_number: "1234 4567 4561 4567",
+  //   age: "19",
+  //   name: "AD",
+  //   guardian: Guardian(name: "Varni",phone_no: "1234567890")
+  // );
   //TODO:USER SHOULD BE FETCHED FROM FIRESTORE
   //---------------------------------------------------------
   @override
@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
         automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: Colors.transparent,
-        title: Container(margin: EdgeInsets.fromLTRB(0, 20, 0, 0),child: Text("Hey ${u1.name}...",style: TextStyle(color: Colors.black,fontSize: 28,fontWeight: FontWeight.bold),textAlign: TextAlign.start,)),
+        title: Container(margin: EdgeInsets.fromLTRB(0, 20, 0, 0),child: Text("Hey ${currentuser.name}...",style: TextStyle(color: Colors.black,fontSize: 28,fontWeight: FontWeight.bold),textAlign: TextAlign.start,)),
       ),
       body: Container(
         child: Column(

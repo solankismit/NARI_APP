@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nari_women_safety/profile/profilepage.dart';
+import 'package:nari_women_safety/services/userdetails.dart';
 import 'package:nari_women_safety/shared/bottom_bar.dart';
 import 'package:nari_women_safety/sos/sos.dart';
 import 'package:shake/shake.dart';
@@ -31,19 +32,21 @@ class _StartPageState extends State<StartPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    ShakeDetector.autoStart(
-      onPhoneShake: () async{
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text('Shake!')));
-        print("Shake");
-        SendSMS();
-        // Do stuff on phone shake
-      },
-      minimumShakeCount: 3,
-      shakeSlopTimeMS: 500,
-      // shakeCountResetTime: 300,
-      shakeThresholdGravity: 1.5,
-    );
+    if(status1){
+      ShakeDetector.autoStart(
+        onPhoneShake: () async {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text('Shake!')));
+          print("Shake");
+          SendSMS();
+          // Do stuff on phone shake
+        },
+        minimumShakeCount: 3,
+        shakeSlopTimeMS: 500,
+        // shakeCountResetTime: 300,
+        shakeThresholdGravity: 1.5,
+      );
+    }
   }
   @override
   Widget build(BuildContext context) {

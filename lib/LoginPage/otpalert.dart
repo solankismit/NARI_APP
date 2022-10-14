@@ -1,8 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:nari_women_safety/services/authservices.dart';
+import 'package:nari_women_safety/services/userdetails.dart';
 import 'package:pinput/pinput.dart';
-
 import 'loginpage.dart';
+import '../services/userdetails.dart' as User;
 
 class OTP extends StatefulWidget {
   OTP({Key? key}) : super(key: key);
@@ -183,3 +186,4 @@ class _OTPState extends State<OTP> {
     );
   }
 }
+

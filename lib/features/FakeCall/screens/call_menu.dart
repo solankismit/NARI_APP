@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
-import '../../../services/defaultuser.dart';
+// import '../../../services/defaultuser.dart';
+import '../../../services/userdetails.dart';
 import '../screens/caller_id.dart';
 import '../screens/scheduler.dart';
 import '../screens/user_manual.dart';
@@ -90,8 +91,8 @@ class _CallMenuState extends State<CallMenu> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => IncomingCall(
-                                      name: u1.guardians[0].name,
-                                      number: u1.guardians[0].phone_no,
+                                      name: currentuser.guardians?[0].name ?? '',
+                                      number: currentuser.guardians?[0].phone_no ?? '',
                                     ),
                                   ),
                                 );
