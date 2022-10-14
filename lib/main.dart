@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:nari_women_safety/features/featurespage.dart';
 import 'package:nari_women_safety/profile/profilepage.dart';
 import 'package:nari_women_safety/services/authservices.dart';
+import 'package:nari_women_safety/services/userdetails.dart';
 import 'package:nari_women_safety/shared/loading.dart';
 import 'package:nari_women_safety/sos/sos.dart';
 import 'package:nari_women_safety/startpage.dart';
@@ -21,13 +22,15 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await FirebaseAppCheck.instance.activate();
+  await getUser();
+  // u1 = User(name: 'Ami',uid: 'ug389',guardians: {});
   runApp(MaterialApp(
     theme: appTheme,
     routes: {
       // '/' : (context) => IniPage(),
 
-      '/' : (context) => GaurdianPage(),
-      // '/' : (context) => Sensors_Detect(),
+      // '/' : (context) => GaurdianPage(),
+      '/' : (context) => RegisterPage(),
       '/home' : (context) => StartPage(),
       '/login' : (context) => LoginPage(),
       '/register' : (context) => RegisterPage(),
@@ -67,7 +70,10 @@ class IniPage extends StatelessWidget {
           }
           else if(snapshot.hasData){
             print("Has Data");
-            return StartPage();
+            return FutureBuilder(
+              future: getUser(),
+              initialData: getUser(),
+              builder: (context, snapshot) => StartPage(),);
           }else{
             print("No Data Avail.");
             return LoginPage();

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
-import '../../../services/defaultuser.dart';
+// import '../../../services/defaultuser.dart';
+import '../../../services/userdetails.dart';
 import '../constants.dart';
 import 'incoming_call.dart';
 
@@ -13,8 +14,8 @@ class CallerID extends StatefulWidget {
 
 class _CallerIDState extends State<CallerID> {
 
-  String name = u1.guardians[0].name;
-  String number = u1.guardians[0].phone_no;
+  String name = currentuser.guardians?[0].name ?? '';
+  String number = currentuser.guardians?[0].phone_no ?? '';
 
   @override
   void initState() {

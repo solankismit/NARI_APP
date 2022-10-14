@@ -2,9 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nari_women_safety/Guardian/Permission.dart';
-import 'package:nari_women_safety/LoginPage/loginpage.dart';
 import 'package:nari_women_safety/main.dart';
-import 'package:nari_women_safety/startpage.dart';
 
 class GaurdianPage extends StatefulWidget {
   const GaurdianPage({Key? key}) : super(key: key);
@@ -17,22 +15,6 @@ class _GaurdianPageState extends State<GaurdianPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.white,
-      // appBar: AppBar(
-      //   backgroundColor: Color.fromARGB(255, 0, 46, 88),
-      //   title: Text("User"),
-      //   centerTitle: true,
-      // ),
-      // body: Container(
-      // alignment: Alignment.center,
-      // padding: EdgeInsets.all(40),
-      // child: ElevatedButton(
-      //   style: ElevatedButton.styleFrom(
-      //     minimumSize: Size(200, 50)
-      //   ),
-      //     onPressed: () {  },
-      //     child: Text('Nari'),
-      //     )
       body: Container(
         margin: EdgeInsets.all(50),
         alignment: Alignment.center,
