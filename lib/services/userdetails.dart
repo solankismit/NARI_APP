@@ -16,7 +16,7 @@ Guardian g1 = Guardian(name: 'name', phone_no: 'phone_no');
 class User {
   final String? name;
   final String? uid;
-  List<Guardian> guardians=[] ;
+  List<Guardian> guardians = [];
   User( {
     this.name,
     this.uid, required dynamic guardians
@@ -72,7 +72,6 @@ Future<void> getUser() async{
   final user = docSnap.data();
   currentuser = user!;
   print(currentuser.guardians);
-  // return currentuser;
 }
 
 void RegisterUser(){

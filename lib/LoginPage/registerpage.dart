@@ -11,8 +11,9 @@ class RegisterPage extends StatelessWidget {
     TextEditingController _guardianname = TextEditingController();
     TextEditingController _guardiannum = TextEditingController();
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
-        margin: EdgeInsets.all(39),
+        margin: EdgeInsets.all(15),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children:[
@@ -21,13 +22,17 @@ class RegisterPage extends StatelessWidget {
             style: appTheme.textTheme.displayLarge,
           ),
             SizedBox(height: 30),
-            Column(
-              children: [
-                TextFields(controller: _name,hint: "Your Name",title: "Name"),
-                TextFields(controller: _age,hint: "Your Age",title: "Age"),
-                TextFields(controller: _aadharnum,hint: "Enter Aadhar Number",title: "Aadhar Number"),
-                TextFields(controller: _guardianname,hint: "Your Guardian Name",title: "Guardian Name"),
-              ],
+            SingleChildScrollView(
+              // physics: FixedExtentScrollPhysics(),
+              scrollDirection: Axis.vertical,
+              child: Column(
+                children: [
+                  TextFields(controller: _name,hint: "Your Name",title: "Name"),
+                  TextFields(controller: _age,hint: "Your Age",title: "Age"),
+                  TextFields(controller: _aadharnum,hint: "Enter Aadhar Number",title: "Aadhar Number"),
+                  TextFields(controller: _guardianname,hint: "Your Guardian Name",title: "Guardian Name"),
+                ],
+              ),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -53,7 +58,8 @@ Widget TextFields({title,hint,required TextEditingController controller}){
         TextField(
           controller: controller,
           decoration: InputDecoration(hintText: hint),
-          onChanged: (value){controller.text = value;},
+
+          // onChanged: (value){controller.text = value;},
         )
       ],
     ),

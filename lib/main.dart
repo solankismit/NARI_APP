@@ -22,7 +22,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await FirebaseAppCheck.instance.activate();
-  await getUser();
   // u1 = User(name: 'Ami',uid: 'ug389',guardians: {});
   runApp(MaterialApp(
     theme: appTheme,
