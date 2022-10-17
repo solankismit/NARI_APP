@@ -1,17 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:nari_women_safety/services/userdetails.dart';
 import 'package:telephony/telephony.dart';
 
 import '../Guardian/Permission.dart';
-  final Telephony telephony = Telephony.instance;
+import '../services/currentlocation.dart';
 
-void SendSMS() async{
+final Telephony telephony = Telephony.instance;
+
+void SendSMS() async {
   print("IN SMS");
-bool? permissionsGranted = await telephony.requestPhoneAndSmsPermissions;
-for(var guardian in Sos.guardians){
-telephony.sendSms(to: "$guardian", message: "Emergency Help Me Please!!!!\nMy Current Location : https://maps.google.com/?q=<lat>,<lng> ");
-};}
+  Position currentlocation = await determinePosition();
+  var lat = currentlocation.latitude;
+  var lng = currentlocation.longitude;
+  bool? permissionsGranted = await telephony.requestPhoneAndSmsPermissions;
+  for (var guardian in Sos.guardians) {
+    telephony.sendSms(
+        to: "$guardian",
+        message:
+            "Emergency Help Me Please!!!!\nMy Current Location : https://maps.google.com/?q=${lat},${lng} ");
+  }
+  ;
+}
+
 class Sos extends StatefulWidget {
   Sos({Key? key}) : super(key: key);
 
@@ -22,7 +34,6 @@ class Sos extends StatefulWidget {
 }
 
 class _SosState extends State<Sos> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,9 +47,9 @@ class _SosState extends State<Sos> {
           children: [
             Container(
               child: IconButton(
-                iconSize: 200,
-                icon: Image.asset('assets/sost.png'), onPressed: ()=>SendSMS()
-              ),
+                  iconSize: 200,
+                  icon: Image.asset('assets/sost.png'),
+                  onPressed: () => SendSMS()),
             ),
             //  Button to add guardians
             SizedBox(
@@ -79,34 +90,34 @@ class _AddGuardianState extends State<AddGuardian> {
     return AlertDialog(
       title: Text('Add Guardian'),
       content: Column(
-          mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  height: Sos.guardians.length<5 ? Sos.guardians.length*50 : 250,
-                  width: double.maxFinite,
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    itemCount: Sos.guardians.length,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        title: Text(Sos.guardians[index]),
-                      );
-                    },
-                  ),
-                ),
-                TextField(
-                  onChanged: (value) {
-                    setState(() {
-                      phoneno = value;
-                    });
-                  },
-                  keyboardType: TextInputType.number,
-                  controller: _guardian,
-                  decoration: InputDecoration(hintText: "Enter Number"),
-                ),
-              ],
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            height: Sos.guardians.length < 5 ? Sos.guardians.length * 50 : 250,
+            width: double.maxFinite,
+            child: ListView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              itemCount: Sos.guardians.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(Sos.guardians[index]),
+                );
+              },
             ),
+          ),
+          TextField(
+            onChanged: (value) {
+              setState(() {
+                phoneno = value;
+              });
+            },
+            keyboardType: TextInputType.number,
+            controller: _guardian,
+            decoration: InputDecoration(hintText: "Enter Number"),
+          ),
+        ],
+      ),
       // ),
       actions: <Widget>[
         TextButton(
