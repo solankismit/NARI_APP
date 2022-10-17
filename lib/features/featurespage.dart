@@ -7,6 +7,7 @@ import 'package:nari_women_safety/features/efir.dart';
 import 'package:nari_women_safety/services/userdetails.dart';
 import 'package:nari_women_safety/sos/sos.dart';
 import 'package:nari_women_safety/theme.dart';
+import '../services/currentlocation.dart';
 import 'feedback.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -43,7 +44,7 @@ class FeaturesPage extends StatelessWidget {
           children: [
             CreateCard('SOS', (){print("Button Pressed");Navigator.push(context, MaterialPageRoute(builder: (context) => Sos()));}),
             CreateCard('Fake Call', (){Navigator.push(context, MaterialPageRoute(builder: (context) => FakeCall()));}),
-            CreateCard('Anonymous Forum', (){getnextRoute(name: 'Mahek', guardian_name: 'rupal', guardian_number: '9998441580');}),
+            CreateCard('Anonymous Forum', (){ Navigator.push(context, MaterialPageRoute(builder: (context) => AnonymousForum()));}),
             CreateCard('Feedback History', (){Navigator.push(context, MaterialPageRoute(builder: (context) => FeedbackHistory()));}),
             CreateCard('E-FIR', (){
               Uri url =  Uri.parse("https://www.deshgujarat.com/2022/07/22/gujarat-govt-announces-online-e-fir-service-for-vehicle-and-mobile-phone-theft/");
