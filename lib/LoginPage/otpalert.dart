@@ -88,7 +88,8 @@ class _OTPState extends State<OTP> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     TextButton(
-                        onPressed: () {
+                        onPressed: () async{
+                          await getUser();
                           Navigator.pushNamedAndRemoveUntil(
                               context, '/login', (route) => false);
                         },
@@ -161,7 +162,10 @@ class _OTPState extends State<OTP> {
 
                   // Sign the user in (or link) with the credential
                   await auth.signInWithCredential(credential);
-                  Navigator.popAndPushNamed(context, '/home');
+                  isuserexists =await isUserExists();
+                    //Go to INI screen
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, '/ini', (route) => false);
                 } on Exception catch (e) {
                   setState((){
                     otp_msg = "Wrong OTP! Try Again.. or\nCheck your Number";

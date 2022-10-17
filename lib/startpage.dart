@@ -32,22 +32,8 @@ class _StartPageState extends State<StartPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    if(status1){
-      ShakeDetector.autoStart(
-        onPhoneShake: () async {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text('Shake!')));
-          print("Shake");
-          SendSMS();
-          // Do stuff on phone shake
-        },
-        minimumShakeCount: 3,
-        shakeSlopTimeMS: 500,
-        // shakeCountResetTime: 300,
-        shakeThresholdGravity: 1.5,
-      );
+    // await getUser();
     }
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

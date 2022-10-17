@@ -43,7 +43,7 @@ class FeaturesPage extends StatelessWidget {
           children: [
             CreateCard('SOS', (){print("Button Pressed");Navigator.push(context, MaterialPageRoute(builder: (context) => Sos()));}),
             CreateCard('Fake Call', (){Navigator.push(context, MaterialPageRoute(builder: (context) => FakeCall()));}),
-            CreateCard('Anonymous Forum', (){getUser();}),
+            CreateCard('Anonymous Forum', (){getnextRoute(name: 'Mahek', guardian_name: 'rupal', guardian_number: '9998441580');}),
             CreateCard('Feedback History', (){Navigator.push(context, MaterialPageRoute(builder: (context) => FeedbackHistory()));}),
             CreateCard('E-FIR', (){
               Uri url =  Uri.parse("https://www.deshgujarat.com/2022/07/22/gujarat-govt-announces-online-e-fir-service-for-vehicle-and-mobile-phone-theft/");

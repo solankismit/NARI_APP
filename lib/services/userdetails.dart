@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'authservices.dart';
 late User currentuser;
-
+var isuserexists = "false";
 class Guardian{
   var name = '';
   var phone_no = '';
@@ -50,33 +50,65 @@ factory User.fromFirestore(DocumentSnapshot<Map<String, dynamic>> snapshot,
 }
 
 
-Future<bool> isUserExists() async{
-  var db = FirebaseFirestore.instance;
-  var u = FirebaseAuth.instance.currentUser;
-  if(db.collection('nari').doc(u?.uid).get() == null){
-    return true;
-  }
-  else{
-    return false;
-  }
-}
-
-Future<void> getUser() async{
+Future<String> isUserExists() async{
+  print('inuserexists');
   var db = FirebaseFirestore.instance;
   var u = FirebaseAuth.instance.currentUser;
   final ref = db.collection("nari").doc(u?.uid).withConverter(
     fromFirestore: User.fromFirestore,
     toFirestore: (User user, _) => user.toFirestore(),
   );
-  final docSnap =   await ref.get();
+  final docSnap = await ref.get();
   final user = docSnap.data();
-  currentuser = user!;
-  print(currentuser.guardians);
-  // return currentuser;
+  if(user?.name != null){
+    print(user);
+  print('inuserexists true');
+    return 'true';
+  }
+  else{
+    return 'false';
+  }
 }
 
-void RegisterUser(){
-//TODO: IMPLEMENTATION OF REGISTERATION
+Future<User> getUser() async{
+  try{
+    var db = FirebaseFirestore.instance;
+    var u = FirebaseAuth.instance.currentUser;
+    final ref = db.collection("nari").doc(u?.uid).withConverter(
+          fromFirestore: User.fromFirestore,
+          toFirestore: (User user, _) => user.toFirestore(),
+        );
+    final docSnap = await ref.get();
+    final user = docSnap.data();
+    currentuser = user!;
+    return currentuser;
+    print(currentuser.name);
+  }catch(e){
+    print(e);
+  }
+  return currentuser;
+}
+
+Future<void> RegisterUser({name,guardian_name,guardian_number,dob}) async{
+  final ref = FirebaseFirestore.instance.collection("nari").doc(AuthService().user!.uid).withConverter(
+    fromFirestore: User.fromFirestore,
+    toFirestore: (User user, _) => user.toFirestore(),
+  );
+  final docSnap = await ref.get();
+  // ref.set()
+  final user = docSnap.data();
+  print("Registering ${await AuthService().user!.uid}");
+  await FirebaseFirestore.instance.collection('nari').doc(await AuthService().user!.uid).set({
+  'uid' : AuthService().user!.uid,
+  'name' : name,
+  'phone_no': AuthService().user!.phoneNumber,
+  'guardians' : [{
+  'name' : guardian_name,
+  'phone_no': guardian_number,
+  }],
+  'birthdate' : DateTime.parse(dob)
+  });
+  print("Done is userdetails page");
 }
 
 
