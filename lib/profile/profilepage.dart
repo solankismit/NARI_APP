@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nari_women_safety/services/userdetails.dart';
 // import 'package:url_launcher/url_launcher.dart';
 
 void main() {
@@ -20,7 +21,7 @@ class ProfilePage extends StatelessWidget {
                 backgroundImage: AssetImage('assets/bgimage.jpg'),
               ),
               Text(
-                'Ami Patel',
+                currentuser.name ?? '',
                 style: TextStyle(
                   fontSize: 30.0,
                   fontFamily: 'Pacifico',

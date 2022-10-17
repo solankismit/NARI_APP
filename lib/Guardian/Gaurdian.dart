@@ -51,7 +51,7 @@ class _GaurdianPageState extends State<GaurdianPage> {
                     RowCard(
                       'Nari',
                       () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                             context,
                             MaterialPageRoute<void>(
                                 builder: (BuildContext context) => IniPage()));

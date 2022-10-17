@@ -6,6 +6,7 @@ import 'package:nari_women_safety/features/featurespage.dart';
 import 'package:nari_women_safety/home/card.dart';
 import 'package:nari_women_safety/home/circularbtn.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:shake/shake.dart';
 import '../services/database.dart';
 import '../services/userdetails.dart';
 import '../shared/bottom_bar.dart';
@@ -23,17 +24,39 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   Color toggleColor = Colors.white;
-  // Adding User in Code only
-  // User u1 = User(
-  //   aadhar_number: "1234 4567 4561 4567",
-  //   age: "19",
-  //   name: "AD",
-  //   guardian: Guardian(name: "Varni",phone_no: "1234567890")
-  // );
-  //TODO:USER SHOULD BE FETCHED FROM FIRESTORE
-  //---------------------------------------------------------
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print("init State home page called");
+    // getUser();
+
+  }
+
+  ShakeDetector detector = ShakeDetector.waitForStart(
+    onPhoneShake: () async {
+      // ScaffoldMessenger.of(context)
+      //     .showSnackBar(SnackBar(content: Text('Shake!')));
+      print("Shake");
+      SendSMS();
+      // Do stuff on phone shake
+    },
+    minimumShakeCount: 3,
+    shakeSlopTimeMS: 500,
+    // shakeCountResetTime: 300,
+    shakeThresholdGravity: 1.5,
+  );
   @override
   Widget build(BuildContext context) {
+    if(status1){
+      print("IN SHAKE DETECTOR HOME");
+      detector.startListening();
+      }
+    else{
+      detector.stopListening();
+      print("Stopped Listneing");
+    }
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -123,9 +146,11 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Text("Sensor Activation",style:TextStyle(color: Colors.black,fontSize: 28,fontWeight: FontWeight.bold),),
                   FlutterSwitch(
-                    onToggle: (value){setState(() {
+                    onToggle: (value){
+                      setState(() {
                       status1 = value;
                       toggleColor = value ?Color.fromARGB(255, 143,182,237 ): Colors.white;
+                      // super.initState();
                     });},
                     value: status1,
                     activeColor: Color.fromARGB(255, 0,46,88),
